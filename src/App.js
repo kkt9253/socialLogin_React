@@ -27,6 +27,15 @@ const App = () => {
             console.error("Access Token 갱신 실패");
           }
         })
+        .catch((error) => {
+          if (error.response && error.response.status === 401) {
+            // 401 Unauthorized 처리
+          
+            alert("로그인이 되어 있지 않습니다. 로그인을 해주세요.");
+          } else {
+            console.error("알 수 없는 오류:", error);
+          }
+        });
     }
   }, []);
 
